@@ -266,6 +266,7 @@
             this.Controls.Add(this.SlaveId);
             this.Controls.Add(this.IPAddress);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
