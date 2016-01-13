@@ -45,12 +45,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtIPAddress = new System.Windows.Forms.TextBox();
             this.IPAddress = new System.Windows.Forms.Label();
+            this.SlaveId = new System.Windows.Forms.Label();
+            this.txtSlaveId = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbTypes = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbTypes);
             this.groupBox2.Controls.Add(this.txtReadMessege);
             this.groupBox2.Controls.Add(this.btnReadRegister);
             this.groupBox2.Controls.Add(this.txtReadRegisterValue);
@@ -58,33 +63,35 @@
             this.groupBox2.Controls.Add(this.txtReadModbusCount);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(11, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(301, 138);
+            this.groupBox2.Size = new System.Drawing.Size(301, 223);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Чтение";
             // 
             // txtReadMessege
             // 
-            this.txtReadMessege.Location = new System.Drawing.Point(142, 105);
+            this.txtReadMessege.Location = new System.Drawing.Point(137, 197);
             this.txtReadMessege.Name = "txtReadMessege";
             this.txtReadMessege.Size = new System.Drawing.Size(158, 20);
             this.txtReadMessege.TabIndex = 6;
             // 
             // btnReadRegister
             // 
-            this.btnReadRegister.Location = new System.Drawing.Point(31, 67);
+            this.btnReadRegister.Location = new System.Drawing.Point(9, 149);
             this.btnReadRegister.Name = "btnReadRegister";
             this.btnReadRegister.Size = new System.Drawing.Size(69, 29);
             this.btnReadRegister.TabIndex = 5;
             this.btnReadRegister.Text = "Прочитать";
             this.btnReadRegister.UseVisualStyleBackColor = true;
+            this.btnReadRegister.Click += new System.EventHandler(this.btnReadRegister_Click);
             // 
             // txtReadRegisterValue
             // 
-            this.txtReadRegisterValue.Location = new System.Drawing.Point(156, 77);
+            this.txtReadRegisterValue.Location = new System.Drawing.Point(99, 154);
             this.txtReadRegisterValue.Name = "txtReadRegisterValue";
             this.txtReadRegisterValue.ReadOnly = true;
             this.txtReadRegisterValue.Size = new System.Drawing.Size(73, 20);
@@ -119,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 108);
+            this.label5.Location = new System.Drawing.Point(1, 200);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 13);
             this.label5.TabIndex = 3;
@@ -141,7 +148,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtWriteModbusAddress);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(11, 212);
+            this.groupBox1.Location = new System.Drawing.Point(9, 436);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(301, 138);
             this.groupBox1.TabIndex = 6;
@@ -156,6 +163,7 @@
             this.btnWriteModbusValue.TabIndex = 5;
             this.btnWriteModbusValue.Text = "Записать";
             this.btnWriteModbusValue.UseVisualStyleBackColor = true;
+            this.btnWriteModbusValue.Click += new System.EventHandler(this.btnWriteModbusValue_Click);
             // 
             // txtWriteModbusValue
             // 
@@ -208,14 +216,54 @@
             this.IPAddress.TabIndex = 3;
             this.IPAddress.Text = "IPAddress";
             // 
+            // SlaveId
+            // 
+            this.SlaveId.AutoSize = true;
+            this.SlaveId.Location = new System.Drawing.Point(140, 9);
+            this.SlaveId.Name = "SlaveId";
+            this.SlaveId.Size = new System.Drawing.Size(43, 13);
+            this.SlaveId.TabIndex = 3;
+            this.SlaveId.Text = "SlaveId";
+            // 
+            // txtSlaveId
+            // 
+            this.txtSlaveId.Location = new System.Drawing.Point(137, 29);
+            this.txtSlaveId.Name = "txtSlaveId";
+            this.txtSlaveId.Size = new System.Drawing.Size(112, 20);
+            this.txtSlaveId.TabIndex = 4;
+            this.txtSlaveId.Text = "1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Тип";
+            // 
+            // cbTypes
+            // 
+            this.cbTypes.FormattingEnabled = true;
+            this.cbTypes.Items.AddRange(new object[] {
+            "Int",
+            "Float",
+            "Float inverse"});
+            this.cbTypes.Location = new System.Drawing.Point(28, 73);
+            this.cbTypes.Name = "cbTypes";
+            this.cbTypes.Size = new System.Drawing.Size(88, 21);
+            this.cbTypes.TabIndex = 7;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 383);
+            this.ClientSize = new System.Drawing.Size(374, 604);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtSlaveId);
             this.Controls.Add(this.txtIPAddress);
+            this.Controls.Add(this.SlaveId);
             this.Controls.Add(this.IPAddress);
             this.Name = "Main";
             this.Text = "Main";
@@ -247,6 +295,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIPAddress;
         private System.Windows.Forms.Label IPAddress;
+        private System.Windows.Forms.Label SlaveId;
+        private System.Windows.Forms.TextBox txtSlaveId;
+        private System.Windows.Forms.ComboBox cbTypes;
+        private System.Windows.Forms.Label label6;
     }
 }
 

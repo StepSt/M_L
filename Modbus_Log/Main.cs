@@ -33,11 +33,23 @@ namespace Modbus_Log
                 try
                 {
                     ushort[] inputs = master.ReadHoldingRegisters(startAddress, numInputs);
-                    //SlaveException MNMess = new SlaveException();
-                    //txtReadMessege.Text = MNMess.Message;
+                    switch (cbTypes.SelectedIndex)
+                    {
+                        case 0:
+                            foreach (ushort us in inputs)
+                                txtReadRegisterValue.Text = us.ToString();
+                            break;
+                        case 1:
+                            // Из 2-х прочитанных ushort собираем 1 float
+                            txtReadRegisterValue.Text = BitConverter.ToSingle(BitConverter.GetBytes(inputs[0]).Concat(BitConverter.GetBytes(inputs[1])).ToArray(), 0).ToString();
+                            break;
+                        case 2:
+                            // Из 2-х прочитанных ushort собираем 1 float inverse
+                            txtReadRegisterValue.Text = BitConverter.ToSingle(BitConverter.GetBytes(inputs[1]).Concat(BitConverter.GetBytes(inputs[0])).ToArray(), 0).ToString();
+                            break;
+                    }
+                    
 
-                    foreach (ushort us in inputs)
-                        txtReadRegisterValue.Text = us.ToString();
                 }
                 catch (SlaveException ex)
                 {
