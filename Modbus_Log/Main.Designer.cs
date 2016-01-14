@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.intcbTypes = new System.Windows.Forms.ComboBox();
             this.txtReadMessege = new System.Windows.Forms.TextBox();
-            this.btnReadRegister = new System.Windows.Forms.Button();
+            this.btnRead = new System.Windows.Forms.Button();
             this.txtReadRegisterValue = new System.Windows.Forms.TextBox();
             this.txtReadModbusAddress = new System.Windows.Forms.TextBox();
             this.txtReadModbusCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnWriteModbusValue = new System.Windows.Forms.Button();
@@ -44,20 +46,18 @@
             this.txtWriteModbusAddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIPAddress = new System.Windows.Forms.TextBox();
-            this.IPAddress = new System.Windows.Forms.Label();
+            this.LBIPAddress = new System.Windows.Forms.Label();
             this.SlaveId = new System.Windows.Forms.Label();
             this.txtSlaveId = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbTypes = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbTypes);
+            this.groupBox2.Controls.Add(this.intcbTypes);
             this.groupBox2.Controls.Add(this.txtReadMessege);
-            this.groupBox2.Controls.Add(this.btnReadRegister);
+            this.groupBox2.Controls.Add(this.btnRead);
             this.groupBox2.Controls.Add(this.txtReadRegisterValue);
             this.groupBox2.Controls.Add(this.txtReadModbusAddress);
             this.groupBox2.Controls.Add(this.txtReadModbusCount);
@@ -72,6 +72,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Чтение";
             // 
+            // intcbTypes
+            // 
+            this.intcbTypes.FormattingEnabled = true;
+            this.intcbTypes.Items.AddRange(new object[] {
+            "Int",
+            "Float",
+            "Float inverse"});
+            this.intcbTypes.Location = new System.Drawing.Point(28, 73);
+            this.intcbTypes.Name = "intcbTypes";
+            this.intcbTypes.Size = new System.Drawing.Size(88, 21);
+            this.intcbTypes.TabIndex = 7;
+            // 
             // txtReadMessege
             // 
             this.txtReadMessege.Location = new System.Drawing.Point(137, 197);
@@ -79,19 +91,18 @@
             this.txtReadMessege.Size = new System.Drawing.Size(158, 20);
             this.txtReadMessege.TabIndex = 6;
             // 
-            // btnReadRegister
+            // btnRead
             // 
-            this.btnReadRegister.Location = new System.Drawing.Point(9, 149);
-            this.btnReadRegister.Name = "btnReadRegister";
-            this.btnReadRegister.Size = new System.Drawing.Size(69, 29);
-            this.btnReadRegister.TabIndex = 5;
-            this.btnReadRegister.Text = "Прочитать";
-            this.btnReadRegister.UseVisualStyleBackColor = true;
-            this.btnReadRegister.Click += new System.EventHandler(this.btnReadRegister_Click);
+            this.btnRead.Location = new System.Drawing.Point(6, 123);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(69, 29);
+            this.btnRead.TabIndex = 5;
+            this.btnRead.Text = "Прочитать";
+            this.btnRead.UseVisualStyleBackColor = true;
             // 
             // txtReadRegisterValue
             // 
-            this.txtReadRegisterValue.Location = new System.Drawing.Point(99, 154);
+            this.txtReadRegisterValue.Location = new System.Drawing.Point(99, 128);
             this.txtReadRegisterValue.Name = "txtReadRegisterValue";
             this.txtReadRegisterValue.ReadOnly = true;
             this.txtReadRegisterValue.Size = new System.Drawing.Size(73, 20);
@@ -131,6 +142,15 @@
             this.label5.Size = new System.Drawing.Size(136, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "Усли что-то пошло не так";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Тип";
             // 
             // label1
             // 
@@ -207,14 +227,14 @@
             this.txtIPAddress.TabIndex = 4;
             this.txtIPAddress.Text = "127.0.0.1";
             // 
-            // IPAddress
+            // LBIPAddress
             // 
-            this.IPAddress.AutoSize = true;
-            this.IPAddress.Location = new System.Drawing.Point(12, 9);
-            this.IPAddress.Name = "IPAddress";
-            this.IPAddress.Size = new System.Drawing.Size(55, 13);
-            this.IPAddress.TabIndex = 3;
-            this.IPAddress.Text = "IPAddress";
+            this.LBIPAddress.AutoSize = true;
+            this.LBIPAddress.Location = new System.Drawing.Point(12, 9);
+            this.LBIPAddress.Name = "LBIPAddress";
+            this.LBIPAddress.Size = new System.Drawing.Size(55, 13);
+            this.LBIPAddress.TabIndex = 3;
+            this.LBIPAddress.Text = "IPAddress";
             // 
             // SlaveId
             // 
@@ -233,27 +253,6 @@
             this.txtSlaveId.TabIndex = 4;
             this.txtSlaveId.Text = "1";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Тип";
-            // 
-            // cbTypes
-            // 
-            this.cbTypes.FormattingEnabled = true;
-            this.cbTypes.Items.AddRange(new object[] {
-            "Int",
-            "Float",
-            "Float inverse"});
-            this.cbTypes.Location = new System.Drawing.Point(28, 73);
-            this.cbTypes.Name = "cbTypes";
-            this.cbTypes.Size = new System.Drawing.Size(88, 21);
-            this.cbTypes.TabIndex = 7;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +263,7 @@
             this.Controls.Add(this.txtSlaveId);
             this.Controls.Add(this.txtIPAddress);
             this.Controls.Add(this.SlaveId);
-            this.Controls.Add(this.IPAddress);
+            this.Controls.Add(this.LBIPAddress);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
@@ -281,7 +280,6 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtReadMessege;
-        private System.Windows.Forms.Button btnReadRegister;
         private System.Windows.Forms.TextBox txtReadRegisterValue;
         private System.Windows.Forms.TextBox txtReadModbusAddress;
         private System.Windows.Forms.TextBox txtReadModbusCount;
@@ -295,11 +293,12 @@
         private System.Windows.Forms.TextBox txtWriteModbusAddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIPAddress;
-        private System.Windows.Forms.Label IPAddress;
+        private System.Windows.Forms.Label LBIPAddress;
         private System.Windows.Forms.Label SlaveId;
         private System.Windows.Forms.TextBox txtSlaveId;
-        private System.Windows.Forms.ComboBox cbTypes;
+        private System.Windows.Forms.ComboBox intcbTypes;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnRead;
     }
 }
 

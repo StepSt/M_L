@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Modbus_log.BL;
 
 namespace Modbus_Log
 {
@@ -16,7 +17,12 @@ namespace Modbus_Log
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+
+            Main form = new Main();
+            TCP maneger = new TCP();
+            MainPresenter presenter = new MainPresenter(form, maneger);
+            
+            Application.Run(form);
         }
     }
 }

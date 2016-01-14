@@ -12,67 +12,66 @@ using Modbus;
 using NLog;
 using Modbus_log.BL;
 
+
 namespace Modbus_Log
 {
-    public partial class Main : Form
+    #region Интерфейс для общения с презентором
+    public interface IMainForm
+    {
+        string IPAddress { get; }
+        string startAddress { get; }
+        string numInputs { get; }
+        string slaveID { get; }
+        int cbTypes { get; }
+        void ReadFloat(float value);
+        event EventHandler ReadBtnClick;
+    }
+    #endregion
+    public partial class Main : Form, IMainForm // объявление интерфейса
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         public Main()
         {
             InitializeComponent();
-            _logger.Log(LogLevel.Info, "Запуск приложения");
+            _logger.Log(LogLevel.Info, "Запуск приложения"); //использование логгера
+            btnRead.Click += new EventHandler(btnRead_Click);
         }
-        private void btnReadRegister_Click(object sender, EventArgs e)
+        #region Проброс событий
+        void btnRead_Click (object sender, EventArgs e)
         {
-            using (TcpClient client = new TcpClient(txtIPAddress.Text, 502))
-            {
-                ModbusIpMaster master = ModbusIpMaster.CreateIp(client);
-
-                ushort startAddress = Convert.ToUInt16(txtReadModbusAddress.Text);
-                ushort numInputs = Convert.ToUInt16(txtReadModbusCount.Text);
-                byte slaveID = Convert.ToByte(txtSlaveId.Text);
-                try
-                {
-                    ushort[] inputs = master.ReadHoldingRegisters(slaveID, startAddress, numInputs);
-                   try
-                   {
-                       TCP GetFloat = new TCP();
-
-                       switch (cbTypes.SelectedIndex)
-                       {
-                           case 0:
-                               foreach (ushort us in inputs)
-                                   txtReadRegisterValue.Text = us.ToString();
-                               break;
-                           case 1:
-                               // Из 2-х прочитанных ushort собираем 1 float
-                               txtReadRegisterValue.Text = Convert.ToString (GetFloat.GetFloatTcp(inputs)); 
-                               _logger.Log(LogLevel.Info, "Прочитал значнеи типа float " + txtReadRegisterValue.Text);
-                               break;
-                           case 2:
-                               // Из 2-х прочитанных ushort собираем 1 float inverse
-                               txtReadRegisterValue.Text = Convert.ToString (GetFloat.GetFloatInverseTcp(inputs)); 
-                               _logger.Log(LogLevel.Info, "Прочитал значнеи типа float inverse " + txtReadRegisterValue.Text);
-                               break;
-                           default:
-                               MessageBox.Show("Выберете тип переменной!");
-                               break;
-                       }
-                   }
-                    catch (IndexOutOfRangeException)
-                   {
-                       MessageBox.Show("Размер не может быть =1");
-                   }
-
-                }
-                catch (SlaveException ex)
-                {
-                    txtReadMessege.Text = Convert.ToString(ex.FunctionCode) + ";";
-                    txtReadMessege.Text += Convert.ToString(ex.SlaveExceptionCode) + ";";
-                }
-            }
+            if (btnRead != null) ReadBtnClick(this, EventArgs.Empty);
         }
+        #endregion
+        #region IMainForm
+        public string IPAddress
+        {
+            get { return txtIPAddress.Text; }
+        }
+        public string startAddress
+        {
+            get { return txtReadModbusAddress.Text; }
+        }
+        public string numInputs
+        {
+            get { return txtReadModbusCount.Text; }
+        }
+        public string slaveID
+        {
+            get { return txtSlaveId.Text; }
+        }
+        public int cbTypes
+        {
+            get { return intcbTypes.SelectedIndex; }
+        }
+        public void ReadFloat (float value)
+        {
+            txtReadRegisterValue.Text = value.ToString();
+        }
+        
+        public event EventHandler ReadBtnClick;
+        #endregion
 
+        #region Работающий спагетти код
         private void btnWriteModbusValue_Click(object sender, EventArgs e)
         {
             using (TcpClient client = new TcpClient(txtIPAddress.Text, 502))
@@ -86,5 +85,6 @@ namespace Modbus_Log
 
             }
         }
+        #endregion
     }
 }
