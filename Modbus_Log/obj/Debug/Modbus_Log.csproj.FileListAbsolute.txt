@@ -25,3 +25,5 @@ D:\M_L\Modbus_Log\obj\Debug\Modbus_Log.Main.resources
 D:\M_L\Modbus_Log\obj\Debug\Modbus_Log.Properties.Resources.resources
 D:\M_L\Modbus_Log\obj\Debug\Modbus_Log.csproj.GenerateResource.Cache
 D:\M_L\Modbus_Log\bin\Debug\Nlog.config
+D:\M_L\Modbus_Log\bin\Debug\Modbus_log.BL.dll
+D:\M_L\Modbus_Log\bin\Debug\Modbus_log.BL.pdb

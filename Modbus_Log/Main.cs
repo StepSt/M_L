@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using Modbus.Device;
 using Modbus;
 using NLog;
+using Modbus_log.BL;
 
 namespace Modbus_Log
 {
@@ -35,6 +36,8 @@ namespace Modbus_Log
                     ushort[] inputs = master.ReadHoldingRegisters(slaveID, startAddress, numInputs);
                    try
                    {
+                       TCP GetFloat = new TCP();
+
                        switch (cbTypes.SelectedIndex)
                        {
                            case 0:
@@ -43,12 +46,12 @@ namespace Modbus_Log
                                break;
                            case 1:
                                // Из 2-х прочитанных ushort собираем 1 float
-                               txtReadRegisterValue.Text = BitConverter.ToSingle(BitConverter.GetBytes(inputs[0]).Concat(BitConverter.GetBytes(inputs[1])).ToArray(), 0).ToString();
+                               txtReadRegisterValue.Text = Convert.ToString (GetFloat.GetFloatTcp(inputs)); 
                                _logger.Log(LogLevel.Info, "Прочитал значнеи типа float " + txtReadRegisterValue.Text);
                                break;
                            case 2:
                                // Из 2-х прочитанных ushort собираем 1 float inverse
-                               txtReadRegisterValue.Text = BitConverter.ToSingle(BitConverter.GetBytes(inputs[1]).Concat(BitConverter.GetBytes(inputs[0])).ToArray(), 0).ToString();
+                               txtReadRegisterValue.Text = Convert.ToString (GetFloat.GetFloatInverseTcp(inputs)); 
                                _logger.Log(LogLevel.Info, "Прочитал значнеи типа float inverse " + txtReadRegisterValue.Text);
                                break;
                            default:
