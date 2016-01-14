@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Sockets;
 using Modbus;
 using Modbus.Device;
 using NLog;
@@ -8,17 +9,17 @@ namespace Modbus_log.BL
 {
     public class TCP:ITCP
     {
+        private TcpClient clientIP;
         private ModbusIpMaster masterIP;
         public TCP()
         {
-
-        }//конструктор по умолчанию
-
-        public TCP(ModbusIpMaster _masterIP)
-        {
-            masterIP = _masterIP;
         }
-
+        public TCP(string IPAddress)
+        {
+            clientIP = new TcpClient(IPAddress, 502);
+            ModbusIpMaster master = ModbusIpMaster.CreateIp(clientIP);
+            masterIP = master;
+        }
         public float GetFloat(byte slaveAddress, ushort startAddress, ushort numberOfPoints)
         {
             float value = 0;

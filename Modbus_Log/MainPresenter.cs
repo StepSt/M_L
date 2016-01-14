@@ -28,16 +28,12 @@ namespace Modbus_Log
 
         void _view_ReadBtnClick(object sender, EventArgs e)
         {
-            string view_IPAddress = _view.IPAddress;
+             _tcp = new TCP(_view.IPAddress);
             string view_startAddress = _view.startAddress;
             string view_numInputs = _view.numInputs;
             string view_slaveID = _view.slaveID;
             int view_cbTypes = _view.cbTypes;
 
-            using (TcpClient client = new TcpClient(view_IPAddress, 502))
-            {
-                ModbusIpMaster master = ModbusIpMaster.CreateIp(client);
-                _tcp = new TCP(master);
                 try
                 {
                     switch (view_cbTypes)
@@ -55,9 +51,8 @@ namespace Modbus_Log
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    MessageBox.Show("Размер не может быть =1");
+                    MessageBox.Show("Размер не может быть = 1");
                 }
-            }
         }
     }
 }
