@@ -16,7 +16,7 @@ namespace Modbus_Log
     class MainPresenter
     {
         private readonly IMainForm _view;
-        private readonly ITCP _tcp;
+        private ITCP _tcp;
 
         public MainPresenter (IMainForm view, ITCP tcp)
         {
@@ -36,42 +36,27 @@ namespace Modbus_Log
 
             using (TcpClient client = new TcpClient(view_IPAddress, 502))
             {
-
                 ModbusIpMaster master = ModbusIpMaster.CreateIp(client);
-
-                ushort startAddress = Convert.ToUInt16(view_startAddress);
-                ushort numInputs = Convert.ToUInt16(view_numInputs);
-                byte slaveID = Convert.ToByte(view_slaveID);
-        try
-            {
-                ushort[] inputs = master.ReadHoldingRegisters(slaveID, startAddress, numInputs);
-                switch (view_cbTypes)
+                _tcp = new TCP(master);
+                try
                 {
-                    //case 0:
-                    //    foreach (ushort us in inputs)
-                    //        txtReadRegisterValue.Text = us.ToString();
-                    //    break;
-                    case 1:
-                        // Из 2-х прочитанных ushort собираем 1 float
-                        float value = _tcp.GetFloatTcp(inputs);
-                        _view.ReadFloat(value);
-                        break;
-                    case 2:
-                        // Из 2-х прочитанных ushort собираем 1 float inverse
-                        value = _tcp.GetFloatInverseTcp(inputs);
-                        _view.ReadFloat(value);
-                        break;
-                    default:
-                        MessageBox.Show("Выберете тип переменной!");
-                        break;
+                    switch (view_cbTypes)
+                    {
+                        case 1:
+                            _view.ReadFloat(_tcp.GetFloat(Convert.ToByte(view_slaveID), Convert.ToUInt16(view_startAddress), Convert.ToUInt16(view_numInputs)));
+                            break;
+                        case 2:
+                            _view.ReadFloat(_tcp.GetFloatInverse(Convert.ToByte(view_slaveID), Convert.ToUInt16(view_startAddress), Convert.ToUInt16(view_numInputs)));
+                            break;
+                        default:
+                                    MessageBox.Show("Выберете тип переменной!");
+                                    break;
+                    }
                 }
-            }
-        catch (IndexOutOfRangeException)
-        {
-            MessageBox.Show("Размер не может быть =1");
-        }
-
-
+                catch (IndexOutOfRangeException)
+                {
+                    MessageBox.Show("Размер не может быть =1");
+                }
             }
         }
     }

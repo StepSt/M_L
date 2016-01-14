@@ -1,9 +1,0 @@
-D:\M_L\Modbus_log.BL\bin\Release\Modbus_log.BL.dll
-D:\M_L\Modbus_log.BL\bin\Release\Modbus_log.BL.pdb
-D:\M_L\Modbus_log.BL\bin\Release\NLog.dll
-D:\M_L\Modbus_log.BL\bin\Release\NModbus4.dll
-D:\M_L\Modbus_log.BL\bin\Release\NLog.xml
-D:\M_L\Modbus_log.BL\bin\Release\NModbus4.xml
-D:\M_L\Modbus_log.BL\obj\Release\Modbus_log.BL.csprojResolveAssemblyReference.cache
-D:\M_L\Modbus_log.BL\obj\Release\Modbus_log.BL.dll
-D:\M_L\Modbus_log.BL\obj\Release\Modbus_log.BL.pdb
