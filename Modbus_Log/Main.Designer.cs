@@ -67,7 +67,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(11, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(301, 223);
+            this.groupBox2.Size = new System.Drawing.Size(172, 175);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Чтение";
@@ -79,21 +79,21 @@
             "Int",
             "Float",
             "Float inverse"});
-            this.intcbTypes.Location = new System.Drawing.Point(28, 73);
+            this.intcbTypes.Location = new System.Drawing.Point(58, 64);
             this.intcbTypes.Name = "intcbTypes";
-            this.intcbTypes.Size = new System.Drawing.Size(88, 21);
+            this.intcbTypes.Size = new System.Drawing.Size(98, 21);
             this.intcbTypes.TabIndex = 7;
             // 
             // txtReadMessege
             // 
-            this.txtReadMessege.Location = new System.Drawing.Point(137, 197);
+            this.txtReadMessege.Location = new System.Drawing.Point(6, 139);
             this.txtReadMessege.Name = "txtReadMessege";
-            this.txtReadMessege.Size = new System.Drawing.Size(158, 20);
+            this.txtReadMessege.Size = new System.Drawing.Size(151, 20);
             this.txtReadMessege.TabIndex = 6;
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(6, 123);
+            this.btnRead.Location = new System.Drawing.Point(9, 91);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(69, 29);
             this.btnRead.TabIndex = 5;
@@ -102,7 +102,7 @@
             // 
             // txtReadRegisterValue
             // 
-            this.txtReadRegisterValue.Location = new System.Drawing.Point(99, 128);
+            this.txtReadRegisterValue.Location = new System.Drawing.Point(84, 96);
             this.txtReadRegisterValue.Name = "txtReadRegisterValue";
             this.txtReadRegisterValue.ReadOnly = true;
             this.txtReadRegisterValue.Size = new System.Drawing.Size(73, 20);
@@ -111,24 +111,24 @@
             // 
             // txtReadModbusAddress
             // 
-            this.txtReadModbusAddress.Location = new System.Drawing.Point(156, 34);
+            this.txtReadModbusAddress.Location = new System.Drawing.Point(58, 12);
             this.txtReadModbusAddress.Name = "txtReadModbusAddress";
-            this.txtReadModbusAddress.Size = new System.Drawing.Size(73, 20);
+            this.txtReadModbusAddress.Size = new System.Drawing.Size(99, 20);
             this.txtReadModbusAddress.TabIndex = 4;
             this.txtReadModbusAddress.Text = "0";
             // 
             // txtReadModbusCount
             // 
-            this.txtReadModbusCount.Location = new System.Drawing.Point(28, 34);
+            this.txtReadModbusCount.Location = new System.Drawing.Point(58, 38);
             this.txtReadModbusCount.Name = "txtReadModbusCount";
-            this.txtReadModbusCount.Size = new System.Drawing.Size(73, 20);
+            this.txtReadModbusCount.Size = new System.Drawing.Size(99, 20);
             this.txtReadModbusCount.TabIndex = 4;
             this.txtReadModbusCount.Text = "1";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(98, 16);
+            this.label2.Location = new System.Drawing.Point(3, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
@@ -137,7 +137,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 200);
+            this.label5.Location = new System.Drawing.Point(6, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 13);
             this.label5.TabIndex = 3;
@@ -146,7 +146,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 57);
+            this.label6.Location = new System.Drawing.Point(3, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 3;
@@ -155,7 +155,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.Location = new System.Drawing.Point(6, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 3;
@@ -168,16 +168,16 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtWriteModbusAddress);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(9, 436);
+            this.groupBox1.Location = new System.Drawing.Point(189, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 138);
+            this.groupBox1.Size = new System.Drawing.Size(173, 175);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Запись";
             // 
             // btnWriteModbusValue
             // 
-            this.btnWriteModbusValue.Location = new System.Drawing.Point(40, 78);
+            this.btnWriteModbusValue.Location = new System.Drawing.Point(9, 91);
             this.btnWriteModbusValue.Name = "btnWriteModbusValue";
             this.btnWriteModbusValue.Size = new System.Drawing.Size(69, 29);
             this.btnWriteModbusValue.TabIndex = 5;
@@ -187,7 +187,7 @@
             // 
             // txtWriteModbusValue
             // 
-            this.txtWriteModbusValue.Location = new System.Drawing.Point(37, 45);
+            this.txtWriteModbusValue.Location = new System.Drawing.Point(66, 38);
             this.txtWriteModbusValue.Name = "txtWriteModbusValue";
             this.txtWriteModbusValue.Size = new System.Drawing.Size(73, 20);
             this.txtWriteModbusValue.TabIndex = 4;
@@ -196,7 +196,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 27);
+            this.label3.Location = new System.Drawing.Point(5, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 3;
@@ -204,7 +204,7 @@
             // 
             // txtWriteModbusAddress
             // 
-            this.txtWriteModbusAddress.Location = new System.Drawing.Point(165, 45);
+            this.txtWriteModbusAddress.Location = new System.Drawing.Point(66, 13);
             this.txtWriteModbusAddress.Name = "txtWriteModbusAddress";
             this.txtWriteModbusAddress.Size = new System.Drawing.Size(73, 20);
             this.txtWriteModbusAddress.TabIndex = 4;
@@ -213,7 +213,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(107, 27);
+            this.label4.Location = new System.Drawing.Point(6, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 3;
