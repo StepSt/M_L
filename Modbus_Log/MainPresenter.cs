@@ -31,13 +31,14 @@ namespace Modbus_Log
 
         void _view_ReadXMLClick(object sender, EventArgs e)
         {
-            _xmlsetting = new XMLSetting(_view.filepach);
-            XMLSetting_var set = new XMLSetting_var();
-            set = _xmlsetting.ReadXMLDocument(_view.filepach, "1");
-            _view.IPAddress = set.IPAddress;
-            _view.startAddress = set.startAddress;
-            _view.slaveID = set.slaveID;
-            _view.numInputs = set.numInputs;
+                _xmlsetting = new XMLSetting(_view.filepach);
+                XMLSetting_var set = new XMLSetting_var();
+                set = _xmlsetting.ReadXMLDocument(_view.filepach,_view.id);
+                _view.IPAddress = set.IPAddress;
+                _view.startAddress = set.startAddress;
+                _view.slaveID = set.slaveID;
+                _view.numInputs = set.numInputs;
+                _view.cbTypes = set.cbTypes;
         }
         void _view_ReadBtnClick(object sender, EventArgs e)
         {

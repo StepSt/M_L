@@ -55,6 +55,9 @@
             this.txtFilepach = new System.Windows.Forms.TextBox();
             this.btRead = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,6 +68,7 @@
             this.groupBox2.Controls.Add(this.intcbTypes);
             this.groupBox2.Controls.Add(this.txtReadMessege);
             this.groupBox2.Controls.Add(this.btRead);
+            this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.txtReadRegisterValue);
             this.groupBox2.Controls.Add(this.txtReadModbusAddress);
             this.groupBox2.Controls.Add(this.txtReadModbusCount);
@@ -74,7 +78,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(11, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(172, 175);
+            this.groupBox2.Size = new System.Drawing.Size(172, 294);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Чтение";
@@ -90,11 +94,10 @@
             this.intcbTypes.Name = "intcbTypes";
             this.intcbTypes.Size = new System.Drawing.Size(98, 21);
             this.intcbTypes.TabIndex = 7;
-            this.intcbTypes.Text = "Float";
             // 
             // txtReadMessege
             // 
-            this.txtReadMessege.Location = new System.Drawing.Point(6, 139);
+            this.txtReadMessege.Location = new System.Drawing.Point(9, 268);
             this.txtReadMessege.Name = "txtReadMessege";
             this.txtReadMessege.Size = new System.Drawing.Size(151, 20);
             this.txtReadMessege.TabIndex = 6;
@@ -136,7 +139,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 123);
+            this.label5.Location = new System.Drawing.Point(9, 252);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 13);
             this.label5.TabIndex = 3;
@@ -162,7 +165,7 @@
             // 
             // btReadXML
             // 
-            this.btReadXML.Location = new System.Drawing.Point(168, 8);
+            this.btReadXML.Location = new System.Drawing.Point(275, 13);
             this.btReadXML.Name = "btReadXML";
             this.btReadXML.Size = new System.Drawing.Size(69, 29);
             this.btReadXML.TabIndex = 5;
@@ -264,10 +267,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.txtid);
             this.groupBox3.Controls.Add(this.txtFilepach);
             this.groupBox3.Controls.Add(this.btReadXML);
-            this.groupBox3.Location = new System.Drawing.Point(12, 249);
+            this.groupBox3.Location = new System.Drawing.Point(12, 368);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(350, 96);
             this.groupBox3.TabIndex = 7;
@@ -307,11 +312,37 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(83, 122);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(73, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "0";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(77, 39);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(112, 20);
+            this.txtid.TabIndex = 4;
+            this.txtid.Text = "1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 42);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 13);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Количество";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 533);
+            this.ClientSize = new System.Drawing.Size(391, 533);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -362,6 +393,9 @@
         private System.Windows.Forms.TextBox txtFilepach;
         private System.Windows.Forms.Button btRead;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtid;
     }
 }
 

@@ -27,6 +27,8 @@ namespace Modbus_Log
         string slaveID { get; set; }
         int cbTypes { get; set; }
         void ReadFloat(float value);
+        string id { get; }
+
         event EventHandler ReadBtnClick;
         event EventHandler ReadXMLClick;
 
@@ -52,8 +54,21 @@ namespace Modbus_Log
         {
             ReadXMLClick(this, EventArgs.Empty); 
         }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ReadBtnClick(this, EventArgs.Empty);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            ReadXMLClick(this, EventArgs.Empty);
+        }
         #endregion
         #region IMainForm
+        public string id
+        {
+            get { return txtid.Text;}
+        }
         public string IPAddress
         {
             get { return txtIPAddress.Text; }
@@ -92,7 +107,6 @@ namespace Modbus_Log
             get { return txtFilepach.Text; }
         }
         #endregion
-
         #region Работающий спагетти код
         private void btnWriteModbusValue_Click(object sender, EventArgs e)
         {
@@ -108,15 +122,5 @@ namespace Modbus_Log
             }
         }
         #endregion
-
-              private void timer1_Tick(object sender, EventArgs e)
-        {
-            ReadBtnClick(this, EventArgs.Empty);
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-            ReadXMLClick(this, EventArgs.Empty); 
-        }
     }
 }
