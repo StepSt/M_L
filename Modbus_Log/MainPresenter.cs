@@ -17,15 +17,28 @@ namespace Modbus_Log
     {
         private readonly IMainForm _view;
         private ITCP _tcp;
+        private InXMLSetting _xmlsetting;
 
-        public MainPresenter (IMainForm view, ITCP tcp)
+        public MainPresenter (IMainForm view, ITCP tcp, InXMLSetting xmlsetting)
         {
             _view = view;
             _tcp = tcp;
+            _xmlsetting = xmlsetting;
 
             _view.ReadBtnClick += _view_ReadBtnClick;
+            _view.ReadXMLClick +=_view_ReadXMLClick;
         }
 
+        void _view_ReadXMLClick(object sender, EventArgs e)
+        {
+            _xmlsetting = new XMLSetting(_view.filepach);
+            XMLSetting_var set = new XMLSetting_var();
+            set = _xmlsetting.ReadXMLDocument(_view.filepach, "1");
+            _view.IPAddress = set.IPAddress;
+            _view.startAddress = set.startAddress;
+            _view.slaveID = set.slaveID;
+            _view.numInputs = set.numInputs;
+        }
         void _view_ReadBtnClick(object sender, EventArgs e)
         {
              _tcp = new TCP(_view.IPAddress);

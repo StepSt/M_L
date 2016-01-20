@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.intcbTypes = new System.Windows.Forms.ComboBox();
             this.txtReadMessege = new System.Windows.Forms.TextBox();
-            this.btnRead = new System.Windows.Forms.Button();
             this.txtReadRegisterValue = new System.Windows.Forms.TextBox();
             this.txtReadModbusAddress = new System.Windows.Forms.TextBox();
             this.txtReadModbusCount = new System.Windows.Forms.TextBox();
@@ -39,6 +39,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btReadXML = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnWriteModbusValue = new System.Windows.Forms.Button();
             this.txtWriteModbusValue = new System.Windows.Forms.TextBox();
@@ -49,15 +50,21 @@
             this.LBIPAddress = new System.Windows.Forms.Label();
             this.SlaveId = new System.Windows.Forms.Label();
             this.txtSlaveId = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFilepach = new System.Windows.Forms.TextBox();
+            this.btRead = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.intcbTypes);
             this.groupBox2.Controls.Add(this.txtReadMessege);
-            this.groupBox2.Controls.Add(this.btnRead);
+            this.groupBox2.Controls.Add(this.btRead);
             this.groupBox2.Controls.Add(this.txtReadRegisterValue);
             this.groupBox2.Controls.Add(this.txtReadModbusAddress);
             this.groupBox2.Controls.Add(this.txtReadModbusCount);
@@ -83,6 +90,7 @@
             this.intcbTypes.Name = "intcbTypes";
             this.intcbTypes.Size = new System.Drawing.Size(98, 21);
             this.intcbTypes.TabIndex = 7;
+            this.intcbTypes.Text = "Float";
             // 
             // txtReadMessege
             // 
@@ -90,15 +98,6 @@
             this.txtReadMessege.Name = "txtReadMessege";
             this.txtReadMessege.Size = new System.Drawing.Size(151, 20);
             this.txtReadMessege.TabIndex = 6;
-            // 
-            // btnRead
-            // 
-            this.btnRead.Location = new System.Drawing.Point(9, 91);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(69, 29);
-            this.btnRead.TabIndex = 5;
-            this.btnRead.Text = "Прочитать";
-            this.btnRead.UseVisualStyleBackColor = true;
             // 
             // txtReadRegisterValue
             // 
@@ -160,6 +159,16 @@
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Размер";
+            // 
+            // btReadXML
+            // 
+            this.btReadXML.Location = new System.Drawing.Point(168, 8);
+            this.btReadXML.Name = "btReadXML";
+            this.btReadXML.Size = new System.Drawing.Size(69, 29);
+            this.btReadXML.TabIndex = 5;
+            this.btReadXML.Text = "Прочитать";
+            this.btReadXML.UseVisualStyleBackColor = true;
+            this.btReadXML.Click += new System.EventHandler(this.btnReadXML_Click);
             // 
             // groupBox1
             // 
@@ -253,11 +262,57 @@
             this.txtSlaveId.TabIndex = 4;
             this.txtSlaveId.Text = "1";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.txtFilepach);
+            this.groupBox3.Controls.Add(this.btReadXML);
+            this.groupBox3.Location = new System.Drawing.Point(12, 249);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(350, 96);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Настройки";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Файл";
+            // 
+            // txtFilepach
+            // 
+            this.txtFilepach.Location = new System.Drawing.Point(48, 13);
+            this.txtFilepach.Name = "txtFilepach";
+            this.txtFilepach.Size = new System.Drawing.Size(112, 20);
+            this.txtFilepach.TabIndex = 4;
+            this.txtFilepach.Text = "modbus.xml";
+            // 
+            // btRead
+            // 
+            this.btRead.Location = new System.Drawing.Point(10, 91);
+            this.btRead.Name = "btRead";
+            this.btRead.Size = new System.Drawing.Size(69, 29);
+            this.btRead.TabIndex = 5;
+            this.btRead.Text = "Прочитать";
+            this.btRead.UseVisualStyleBackColor = true;
+            this.btRead.Click += new System.EventHandler(this.btnRead_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 604);
+            this.ClientSize = new System.Drawing.Size(374, 533);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtSlaveId);
@@ -267,10 +322,13 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,7 +356,12 @@
         private System.Windows.Forms.TextBox txtSlaveId;
         private System.Windows.Forms.ComboBox intcbTypes;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnRead;
+        private System.Windows.Forms.Button btReadXML;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtFilepach;
+        private System.Windows.Forms.Button btRead;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -20,7 +20,8 @@ namespace Modbus_Log
 
             Main form = new Main();
             TCP maneger = new TCP();
-            MainPresenter presenter = new MainPresenter(form, maneger);
+            XMLSetting setting = new XMLSetting();
+            MainPresenter presenter = new MainPresenter(form, maneger, setting);
             
             Application.Run(form);
         }

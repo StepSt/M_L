@@ -12,6 +12,9 @@ using Modbus;
 using NLog;
 using Modbus_log.BL;
 
+using System.Xml;
+using System.IO;
+
 
 namespace Modbus_Log
 {
@@ -25,6 +28,9 @@ namespace Modbus_Log
         int cbTypes { get; set; }
         void ReadFloat(float value);
         event EventHandler ReadBtnClick;
+        event EventHandler ReadXMLClick;
+
+        string filepach { get; }
     }
     #endregion
     public partial class Main : Form, IMainForm // объявление интерфейса
@@ -34,12 +40,17 @@ namespace Modbus_Log
         {
             InitializeComponent();
             _logger.Log(LogLevel.Info, "Запуск приложения"); //использование логгера
-            btnRead.Click += new EventHandler(btnRead_Click);
+            btRead.Click += new EventHandler(btnRead_Click);
+            btReadXML.Click += new EventHandler(btnReadXML_Click);
         }
         #region Проброс событий
         void btnRead_Click (object sender, EventArgs e)
         {
-            if (btnRead != null) ReadBtnClick(this, EventArgs.Empty);
+            if (btRead != null) ReadBtnClick(this, EventArgs.Empty);
+        }
+        void btnReadXML_Click(object sender, EventArgs ex)
+        {
+            ReadXMLClick(this, EventArgs.Empty); 
         }
         #endregion
         #region IMainForm
@@ -74,6 +85,12 @@ namespace Modbus_Log
         }
         
         public event EventHandler ReadBtnClick;
+        public event EventHandler ReadXMLClick;
+
+        public string filepach
+        {
+            get { return txtFilepach.Text; }
+        }
         #endregion
 
         #region Работающий спагетти код
@@ -91,5 +108,15 @@ namespace Modbus_Log
             }
         }
         #endregion
+
+              private void timer1_Tick(object sender, EventArgs e)
+        {
+            ReadBtnClick(this, EventArgs.Empty);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            ReadXMLClick(this, EventArgs.Empty); 
+        }
     }
 }
