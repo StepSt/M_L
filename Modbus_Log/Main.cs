@@ -18,11 +18,11 @@ namespace Modbus_Log
     #region Интерфейс для общения с презентором
     public interface IMainForm
     {
-        string IPAddress { get; }
-        string startAddress { get; }
-        string numInputs { get; }
-        string slaveID { get; }
-        int cbTypes { get; }
+        string IPAddress { get; set; }
+        string startAddress { get; set; }
+        string numInputs { get; set; }
+        string slaveID { get; set; }
+        int cbTypes { get; set; }
         void ReadFloat(float value);
         event EventHandler ReadBtnClick;
     }
@@ -46,22 +46,27 @@ namespace Modbus_Log
         public string IPAddress
         {
             get { return txtIPAddress.Text; }
+            set { txtIPAddress.Text = value; }
         }
         public string startAddress
         {
             get { return txtReadModbusAddress.Text; }
+            set { txtReadModbusAddress.Text = value; }
         }
         public string numInputs
         {
             get { return txtReadModbusCount.Text; }
+            set { txtReadModbusCount.Text = value; }
         }
         public string slaveID
         {
             get { return txtSlaveId.Text; }
+            set { txtSlaveId.Text = value; }
         }
         public int cbTypes
         {
             get { return intcbTypes.SelectedIndex; }
+            set { intcbTypes.SelectedIndex = value; }
         }
         public void ReadFloat (float value)
         {
