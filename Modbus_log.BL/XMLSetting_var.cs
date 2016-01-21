@@ -11,7 +11,7 @@ namespace Modbus_log.BL
         public string IPAddress;
         public string startAddress;
         public string numInputs;
-        public string slaveID;
+        public string  slaveID;
         public int cbTypes;
 
     }

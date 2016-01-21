@@ -29,6 +29,8 @@ namespace Modbus_Log
         void ReadFloat(float value);
         string id { get; }
 
+        ListBox valuesModbus { get; }
+
         event EventHandler ReadBtnClick;
         event EventHandler ReadXMLClick;
 
@@ -94,9 +96,15 @@ namespace Modbus_Log
             get { return intcbTypes.SelectedIndex; }
             set { intcbTypes.SelectedIndex = value; }
         }
+
+        public ListBox valuesModbus
+        {
+            get { return listValueModbus; }
+        }
+
         public void ReadFloat (float value)
         {
-            txtReadRegisterValue.Text = value.ToString();
+            txtReadRegisterValue.Text += value.ToString() + "\n\r";
         }
         
         public event EventHandler ReadBtnClick;

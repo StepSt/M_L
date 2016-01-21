@@ -18,6 +18,7 @@ namespace Modbus_Log
         private readonly IMainForm _view;
         private ITCP _tcp;
         private InXMLSetting _xmlsetting;
+        public XMLSetting_var[] set = new XMLSetting_var[2];
 
         public MainPresenter (IMainForm view, ITCP tcp, InXMLSetting xmlsetting)
         {
@@ -32,41 +33,44 @@ namespace Modbus_Log
         void _view_ReadXMLClick(object sender, EventArgs e)
         {
                 _xmlsetting = new XMLSetting(_view.filepach);
-                XMLSetting_var set = new XMLSetting_var();
-                set = _xmlsetting.ReadXMLDocument(_view.filepach,_view.id);
-                _view.IPAddress = set.IPAddress;
-                _view.startAddress = set.startAddress;
-                _view.slaveID = set.slaveID;
-                _view.numInputs = set.numInputs;
-                _view.cbTypes = set.cbTypes;
+                //XMLSetting_var [] set = new XMLSetting_var [2];
+
+            for (int i = 0; i < Convert.ToInt32(_view.id); i++)
+            {
+                set[i] = _xmlsetting.ReadXMLDocument(_view.filepach, i.ToString());
+            }
+            //_view.IPAddress = set.IPAddress;
+                //_view.startAddress = set.startAddress;
+                //_view.slaveID = set.slaveID;
+                //_view.numInputs = set.numInputs;
+                //_view.cbTypes = set.cbTypes;
         }
         void _view_ReadBtnClick(object sender, EventArgs e)
         {
-             _tcp = new TCP(_view.IPAddress);
-            string view_startAddress = _view.startAddress;
-            string view_numInputs = _view.numInputs;
-            string view_slaveID = _view.slaveID;
-            int view_cbTypes = _view.cbTypes;
-
+            for (int i = 0; i < Convert.ToInt32(_view.id); i++)
+            {
+                _tcp = new TCP(set[i].IPAddress);
                 try
                 {
-                    switch (view_cbTypes)
+                    switch (set[i].cbTypes)
                     {
                         case 1:
-                            _view.ReadFloat(_tcp.GetFloat(Convert.ToByte(view_slaveID), Convert.ToUInt16(view_startAddress), Convert.ToUInt16(view_numInputs)));
+                            _view.ReadFloat(_tcp.GetFloat(Convert.ToByte(set[i].slaveID), Convert.ToUInt16(set[i].startAddress), Convert.ToUInt16(set[i].numInputs)));
+                            //_view.valuesModbus.Items.Add(_view.ReadFloat(_tcp.GetFloat(Convert.ToByte(set[i].slaveID), Convert.ToUInt16(set[i].startAddress), Convert.ToUInt16(set[i].numInputs))));
                             break;
                         case 2:
-                            _view.ReadFloat(_tcp.GetFloatInverse(Convert.ToByte(view_slaveID), Convert.ToUInt16(view_startAddress), Convert.ToUInt16(view_numInputs)));
+                            _view.ReadFloat(_tcp.GetFloatInverse(Convert.ToByte(set[i].slaveID), Convert.ToUInt16(set[i].startAddress), Convert.ToUInt16(set[i].numInputs)));
                             break;
                         default:
-                                    MessageBox.Show("Выберете тип переменной!");
-                                    break;
+                            MessageBox.Show("Выберете тип переменной!");
+                            break;
                     }
                 }
                 catch (IndexOutOfRangeException)
                 {
                     MessageBox.Show("Размер не может быть = 1");
                 }
+            }
         }
     }
 }
