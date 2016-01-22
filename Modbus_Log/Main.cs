@@ -21,15 +21,10 @@ namespace Modbus_Log
     #region Интерфейс для общения с презентором
     public interface IMainForm
     {
-        string IPAddress { get; set; }
-        string startAddress { get; set; }
-        string numInputs { get; set; }
-        string slaveID { get; set; }
-        int cbTypes { get; set; }
-        void ReadFloat(float value);
+        float ReadFloat(float value);
         string id { get; }
 
-        ListBox valuesModbus { get; }
+        DataGridView valuesModbus { get; }
 
         event EventHandler ReadBtnClick;
         event EventHandler ReadXMLClick;
@@ -54,6 +49,10 @@ namespace Modbus_Log
         }
         void btnReadXML_Click(object sender, EventArgs ex)
         {
+            while (dataGridView_ValueModbus.Rows.Count < Convert.ToInt32(id))
+            {
+                dataGridView_ValueModbus.Rows.Add();
+            }
             ReadXMLClick(this, EventArgs.Empty); 
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -63,6 +62,10 @@ namespace Modbus_Log
 
         private void Main_Load(object sender, EventArgs e)
         {
+            while (dataGridView_ValueModbus.Rows.Count < Convert.ToInt32(id))
+            {
+                dataGridView_ValueModbus.Rows.Add();
+            }
             ReadXMLClick(this, EventArgs.Empty);
         }
         #endregion
@@ -71,40 +74,15 @@ namespace Modbus_Log
         {
             get { return txtid.Text;}
         }
-        public string IPAddress
+
+        public DataGridView valuesModbus
         {
-            get { return txtIPAddress.Text; }
-            set { txtIPAddress.Text = value; }
-        }
-        public string startAddress
-        {
-            get { return txtReadModbusAddress.Text; }
-            set { txtReadModbusAddress.Text = value; }
-        }
-        public string numInputs
-        {
-            get { return txtReadModbusCount.Text; }
-            set { txtReadModbusCount.Text = value; }
-        }
-        public string slaveID
-        {
-            get { return txtSlaveId.Text; }
-            set { txtSlaveId.Text = value; }
-        }
-        public int cbTypes
-        {
-            get { return intcbTypes.SelectedIndex; }
-            set { intcbTypes.SelectedIndex = value; }
+            get { return dataGridView_ValueModbus; }
         }
 
-        public ListBox valuesModbus
+        public float ReadFloat (float value)
         {
-            get { return listValueModbus; }
-        }
-
-        public void ReadFloat (float value)
-        {
-            txtReadRegisterValue.Text += value.ToString() + "\n\r";
+            return value;
         }
         
         public event EventHandler ReadBtnClick;
@@ -116,19 +94,19 @@ namespace Modbus_Log
         }
         #endregion
         #region Работающий спагетти код
-        private void btnWriteModbusValue_Click(object sender, EventArgs e)
-        {
-            using (TcpClient client = new TcpClient(txtIPAddress.Text, 502))
-            {
-                ModbusIpMaster master = ModbusIpMaster.CreateIp(client);
+        //private void btnWriteModbusValue_Click(object sender, EventArgs e)
+        //{
+        //    using (TcpClient client = new TcpClient(txtIPAddress.Text, 502))
+        //    {
+        //        ModbusIpMaster master = ModbusIpMaster.CreateIp(client);
 
-                ushort startAddress = Convert.ToUInt16(txtWriteModbusAddress.Text);
-                ushort numInputs = Convert.ToUInt16(txtWriteModbusValue.Text);
+        //        ushort startAddress = Convert.ToUInt16(txtWriteModbusAddress.Text);
+        //        ushort numInputs = Convert.ToUInt16(txtWriteModbusValue.Text);
 
-                master.WriteSingleRegister(startAddress, numInputs);
+        //        master.WriteSingleRegister(startAddress, numInputs);
 
-            }
-        }
+        //    }
+        //}
         #endregion
     }
 }

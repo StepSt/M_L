@@ -29,16 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.intcbTypes = new System.Windows.Forms.ComboBox();
+            this.dataGridView_ValueModbus = new System.Windows.Forms.DataGridView();
             this.txtReadMessege = new System.Windows.Forms.TextBox();
             this.btRead = new System.Windows.Forms.Button();
-            this.txtReadRegisterValue = new System.Windows.Forms.TextBox();
-            this.txtReadModbusAddress = new System.Windows.Forms.TextBox();
-            this.txtReadModbusCount = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btReadXML = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnWriteModbusValue = new System.Windows.Forms.Button();
@@ -46,51 +40,40 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtWriteModbusAddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIPAddress = new System.Windows.Forms.TextBox();
-            this.LBIPAddress = new System.Windows.Forms.Label();
-            this.SlaveId = new System.Windows.Forms.Label();
-            this.txtSlaveId = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.txtFilepach = new System.Windows.Forms.TextBox();
-            this.listValueModbus = new System.Windows.Forms.ListBox();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ValueModbus)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.intcbTypes);
+            this.groupBox2.Controls.Add(this.dataGridView_ValueModbus);
             this.groupBox2.Controls.Add(this.txtReadMessege);
             this.groupBox2.Controls.Add(this.btRead);
-            this.groupBox2.Controls.Add(this.txtReadRegisterValue);
-            this.groupBox2.Controls.Add(this.txtReadModbusAddress);
-            this.groupBox2.Controls.Add(this.txtReadModbusCount);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(11, 68);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(172, 294);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Чтение";
             // 
-            // intcbTypes
+            // dataGridView_ValueModbus
             // 
-            this.intcbTypes.FormattingEnabled = true;
-            this.intcbTypes.Items.AddRange(new object[] {
-            "Int",
-            "Float",
-            "Float inverse"});
-            this.intcbTypes.Location = new System.Drawing.Point(58, 64);
-            this.intcbTypes.Name = "intcbTypes";
-            this.intcbTypes.Size = new System.Drawing.Size(98, 21);
-            this.intcbTypes.TabIndex = 7;
+            this.dataGridView_ValueModbus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_ValueModbus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Value});
+            this.dataGridView_ValueModbus.Location = new System.Drawing.Point(9, 19);
+            this.dataGridView_ValueModbus.Name = "dataGridView_ValueModbus";
+            this.dataGridView_ValueModbus.Size = new System.Drawing.Size(148, 89);
+            this.dataGridView_ValueModbus.TabIndex = 8;
             // 
             // txtReadMessege
             // 
@@ -101,48 +84,13 @@
             // 
             // btRead
             // 
-            this.btRead.Location = new System.Drawing.Point(10, 91);
+            this.btRead.Location = new System.Drawing.Point(97, 220);
             this.btRead.Name = "btRead";
             this.btRead.Size = new System.Drawing.Size(69, 29);
             this.btRead.TabIndex = 5;
             this.btRead.Text = "Прочитать";
             this.btRead.UseVisualStyleBackColor = true;
             this.btRead.Click += new System.EventHandler(this.btnRead_Click);
-            // 
-            // txtReadRegisterValue
-            // 
-            this.txtReadRegisterValue.Location = new System.Drawing.Point(84, 91);
-            this.txtReadRegisterValue.Multiline = true;
-            this.txtReadRegisterValue.Name = "txtReadRegisterValue";
-            this.txtReadRegisterValue.ReadOnly = true;
-            this.txtReadRegisterValue.Size = new System.Drawing.Size(73, 65);
-            this.txtReadRegisterValue.TabIndex = 4;
-            this.txtReadRegisterValue.Text = "0";
-            // 
-            // txtReadModbusAddress
-            // 
-            this.txtReadModbusAddress.Location = new System.Drawing.Point(58, 12);
-            this.txtReadModbusAddress.Name = "txtReadModbusAddress";
-            this.txtReadModbusAddress.Size = new System.Drawing.Size(99, 20);
-            this.txtReadModbusAddress.TabIndex = 4;
-            this.txtReadModbusAddress.Text = "0";
-            // 
-            // txtReadModbusCount
-            // 
-            this.txtReadModbusCount.Location = new System.Drawing.Point(58, 38);
-            this.txtReadModbusCount.Name = "txtReadModbusCount";
-            this.txtReadModbusCount.Size = new System.Drawing.Size(99, 20);
-            this.txtReadModbusCount.TabIndex = 4;
-            this.txtReadModbusCount.Text = "1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Адрес";
             // 
             // label5
             // 
@@ -152,24 +100,6 @@
             this.label5.Size = new System.Drawing.Size(136, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "Усли что-то пошло не так";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Тип";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Размер";
             // 
             // btReadXML
             // 
@@ -188,9 +118,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtWriteModbusAddress);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(189, 68);
+            this.groupBox1.Location = new System.Drawing.Point(190, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(173, 175);
+            this.groupBox1.Size = new System.Drawing.Size(173, 294);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Запись";
@@ -203,7 +133,7 @@
             this.btnWriteModbusValue.TabIndex = 5;
             this.btnWriteModbusValue.Text = "Записать";
             this.btnWriteModbusValue.UseVisualStyleBackColor = true;
-            this.btnWriteModbusValue.Click += new System.EventHandler(this.btnWriteModbusValue_Click);
+            //this.btnWriteModbusValue.Click += new System.EventHandler(this.btnWriteModbusValue_Click);
             // 
             // txtWriteModbusValue
             // 
@@ -239,40 +169,6 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Адрес";
             // 
-            // txtIPAddress
-            // 
-            this.txtIPAddress.Location = new System.Drawing.Point(9, 29);
-            this.txtIPAddress.Name = "txtIPAddress";
-            this.txtIPAddress.Size = new System.Drawing.Size(112, 20);
-            this.txtIPAddress.TabIndex = 4;
-            this.txtIPAddress.Text = "127.0.0.1";
-            // 
-            // LBIPAddress
-            // 
-            this.LBIPAddress.AutoSize = true;
-            this.LBIPAddress.Location = new System.Drawing.Point(12, 9);
-            this.LBIPAddress.Name = "LBIPAddress";
-            this.LBIPAddress.Size = new System.Drawing.Size(55, 13);
-            this.LBIPAddress.TabIndex = 3;
-            this.LBIPAddress.Text = "IPAddress";
-            // 
-            // SlaveId
-            // 
-            this.SlaveId.AutoSize = true;
-            this.SlaveId.Location = new System.Drawing.Point(140, 9);
-            this.SlaveId.Name = "SlaveId";
-            this.SlaveId.Size = new System.Drawing.Size(43, 13);
-            this.SlaveId.TabIndex = 3;
-            this.SlaveId.Text = "SlaveId";
-            // 
-            // txtSlaveId
-            // 
-            this.txtSlaveId.Location = new System.Drawing.Point(137, 29);
-            this.txtSlaveId.Name = "txtSlaveId";
-            this.txtSlaveId.Size = new System.Drawing.Size(112, 20);
-            this.txtSlaveId.TabIndex = 4;
-            this.txtSlaveId.Text = "1";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label8);
@@ -280,7 +176,7 @@
             this.groupBox3.Controls.Add(this.txtid);
             this.groupBox3.Controls.Add(this.txtFilepach);
             this.groupBox3.Controls.Add(this.btReadXML);
-            this.groupBox3.Location = new System.Drawing.Point(12, 368);
+            this.groupBox3.Location = new System.Drawing.Point(12, 312);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(350, 96);
             this.groupBox3.TabIndex = 7;
@@ -311,7 +207,7 @@
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(112, 20);
             this.txtid.TabIndex = 4;
-            this.txtid.Text = "1";
+            this.txtid.Text = "2";
             // 
             // txtFilepach
             // 
@@ -321,39 +217,31 @@
             this.txtFilepach.TabIndex = 4;
             this.txtFilepach.Text = "modbus.xml";
             // 
-            // listValueModbus
+            // Value
             // 
-            this.listValueModbus.FormattingEnabled = true;
-            this.listValueModbus.Location = new System.Drawing.Point(220, 261);
-            this.listValueModbus.Name = "listValueModbus";
-            this.listValueModbus.Size = new System.Drawing.Size(120, 95);
-            this.listValueModbus.TabIndex = 8;
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 533);
-            this.Controls.Add(this.listValueModbus);
+            this.ClientSize = new System.Drawing.Size(371, 430);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtSlaveId);
-            this.Controls.Add(this.txtIPAddress);
-            this.Controls.Add(this.SlaveId);
-            this.Controls.Add(this.LBIPAddress);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ValueModbus)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -361,24 +249,13 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtReadMessege;
-        private System.Windows.Forms.TextBox txtReadRegisterValue;
-        private System.Windows.Forms.TextBox txtReadModbusAddress;
-        private System.Windows.Forms.TextBox txtReadModbusCount;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnWriteModbusValue;
         private System.Windows.Forms.TextBox txtWriteModbusValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWriteModbusAddress;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIPAddress;
-        private System.Windows.Forms.Label LBIPAddress;
-        private System.Windows.Forms.Label SlaveId;
-        private System.Windows.Forms.TextBox txtSlaveId;
-        private System.Windows.Forms.ComboBox intcbTypes;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btReadXML;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label7;
@@ -386,7 +263,8 @@
         private System.Windows.Forms.Button btRead;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtid;
-        private System.Windows.Forms.ListBox listValueModbus;
+        private System.Windows.Forms.DataGridView dataGridView_ValueModbus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
     }
 }
 
