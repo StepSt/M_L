@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView_ValueModbus = new System.Windows.Forms.DataGridView();
-            this.txtReadMessege = new System.Windows.Forms.TextBox();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btRead = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.btReadXML = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnWriteModbusValue = new System.Windows.Forms.Button();
@@ -45,7 +45,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.txtFilepach = new System.Windows.Forms.TextBox();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zedGraph = new ZedGraph.ZedGraphControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ValueModbus)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -55,9 +57,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView_ValueModbus);
-            this.groupBox2.Controls.Add(this.txtReadMessege);
             this.groupBox2.Controls.Add(this.btRead);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(172, 294);
@@ -75,31 +75,20 @@
             this.dataGridView_ValueModbus.Size = new System.Drawing.Size(148, 89);
             this.dataGridView_ValueModbus.TabIndex = 8;
             // 
-            // txtReadMessege
+            // Value
             // 
-            this.txtReadMessege.Location = new System.Drawing.Point(9, 268);
-            this.txtReadMessege.Name = "txtReadMessege";
-            this.txtReadMessege.Size = new System.Drawing.Size(151, 20);
-            this.txtReadMessege.TabIndex = 6;
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
             // 
             // btRead
             // 
-            this.btRead.Location = new System.Drawing.Point(97, 220);
+            this.btRead.Location = new System.Drawing.Point(97, 259);
             this.btRead.Name = "btRead";
             this.btRead.Size = new System.Drawing.Size(69, 29);
             this.btRead.TabIndex = 5;
             this.btRead.Text = "Прочитать";
             this.btRead.UseVisualStyleBackColor = true;
             this.btRead.Click += new System.EventHandler(this.btnRead_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 252);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Усли что-то пошло не так";
             // 
             // btReadXML
             // 
@@ -118,7 +107,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtWriteModbusAddress);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(190, 12);
+            this.groupBox1.Location = new System.Drawing.Point(666, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(173, 294);
             this.groupBox1.TabIndex = 6;
@@ -133,7 +122,6 @@
             this.btnWriteModbusValue.TabIndex = 5;
             this.btnWriteModbusValue.Text = "Записать";
             this.btnWriteModbusValue.UseVisualStyleBackColor = true;
-            //this.btnWriteModbusValue.Click += new System.EventHandler(this.btnWriteModbusValue_Click);
             // 
             // txtWriteModbusValue
             // 
@@ -217,16 +205,39 @@
             this.txtFilepach.TabIndex = 4;
             this.txtFilepach.Text = "modbus.xml";
             // 
-            // Value
+            // zedGraph
             // 
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
+            this.zedGraph.Location = new System.Drawing.Point(190, 25);
+            this.zedGraph.Name = "zedGraph";
+            this.zedGraph.ScrollGrace = 0D;
+            this.zedGraph.ScrollMaxX = 0D;
+            this.zedGraph.ScrollMaxY = 0D;
+            this.zedGraph.ScrollMaxY2 = 0D;
+            this.zedGraph.ScrollMinX = 0D;
+            this.zedGraph.ScrollMinY = 0D;
+            this.zedGraph.ScrollMinY2 = 0D;
+            this.zedGraph.Size = new System.Drawing.Size(470, 275);
+            this.zedGraph.TabIndex = 8;
+            this.zedGraph.UseExtendedPrintDialog = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 430);
+            this.ClientSize = new System.Drawing.Size(851, 430);
+            this.Controls.Add(this.zedGraph);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -235,7 +246,6 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ValueModbus)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -248,8 +258,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtReadMessege;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnWriteModbusValue;
         private System.Windows.Forms.TextBox txtWriteModbusValue;
@@ -265,6 +273,9 @@
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.DataGridView dataGridView_ValueModbus;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
+        private ZedGraph.ZedGraphControl zedGraph;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

@@ -15,6 +15,9 @@ using Modbus_log.BL;
 using System.Xml;
 using System.IO;
 
+using ZedGraph;
+using System.Drawing;
+
 
 namespace Modbus_Log
 {
@@ -34,6 +37,11 @@ namespace Modbus_Log
     #endregion
     public partial class Main : Form, IMainForm // объявление интерфейса
     {
+        #region Кусок Трендов
+        int _capacity = 100;
+        RollingPointPairList _data;
+        double _amplitude = 20;
+        #endregion
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         public Main()
         {
@@ -62,6 +70,12 @@ namespace Modbus_Log
 
         private void Main_Load(object sender, EventArgs e)
         {
+            #region Кусок трендов
+            // !!! Создаем массив данных с ограниченной емкостью.
+            // При превышениизаданной емкости первые элементы в массиве будут удаляться
+            _data = new RollingPointPairList(_capacity);
+            PrepareGraph();
+            #endregion
             while (dataGridView_ValueModbus.Rows.Count < Convert.ToInt32(id))
             {
                 dataGridView_ValueModbus.Rows.Add();
@@ -107,6 +121,63 @@ namespace Modbus_Log
 
         //    }
         //}
+        #endregion
+        #region Кусок трендов
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            // !!! Добавим новый отсчет к данным
+            double newValue = Convert.ToDouble(dataGridView_ValueModbus.Rows[0].Cells[0].Value);
+
+            DateTime startDate = new DateTime();
+            startDate = DateTime.Now;
+            DateTime currentDate = startDate.AddSeconds(1);
+
+            // Рассчитаем интервал по оси X, который нужно отобразить на графике
+            DateTime date0 = new DateTime();
+            DateTime date1 = new DateTime();
+            date0 = startDate.AddMinutes(-1);
+            date1 = startDate.AddMinutes(5);
+            XDate xmin = date0;
+            XDate xmax = date1;
+
+            GraphPane pane = zedGraph.GraphPane;
+            pane.XAxis.Scale.Min = xmin;
+            pane.XAxis.Scale.Max = xmax;
+            _data.Add(new XDate(currentDate), newValue);
+            // Обновим оси
+            zedGraph.AxisChange();
+
+            // Обновим сам график
+            zedGraph.Invalidate();
+        }
+
+
+        /// <summary>
+        /// Подготовка к отображению данных
+        /// </summary>
+        private void PrepareGraph()
+        {
+            // Получим панель для рисования
+            GraphPane pane = zedGraph.GraphPane;
+
+            // Очистим список кривых на тот случай, если до этого сигналы уже были нарисованы
+            pane.CurveList.Clear();
+
+            // Добавим кривую пока еще без каких-либо точек
+            LineItem myCurve = pane.AddCurve("sin (x)", _data, Color.Blue, SymbolType.None);
+
+            // Устанавливаем интересующий нас интервал по оси Y
+            pane.YAxis.Scale.Min = -_amplitude;
+            pane.YAxis.Scale.Max = _amplitude;
+
+            pane.XAxis.Type = AxisType.Date;
+
+            // Вызываем метод AxisChange (), чтобы обновить данные об осях. 
+            zedGraph.AxisChange();
+
+            // Обновляем график
+            zedGraph.Invalidate();
+        }
         #endregion
     }
 }
