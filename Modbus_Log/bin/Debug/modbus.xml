@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modbus>
+  <tag id="0">
+    <IPAdress>127.0.0.1</IPAdress>
+    <SlaveID>1</SlaveID>
+    <Adress>0</Adress>
+    <Num>2</Num>
+    <Types>Float</Types>
+  </tag>
+  <tag id="1">
+    <IPAdress>127.0.0.1</IPAdress>
+    <SlaveID>1</SlaveID>
+    <Adress>2</Adress>
+    <Num>2</Num>
+    <Types>Float</Types>
+  </tag>
+    <tag id="2">
+    <IPAdress>127.0.0.1</IPAdress>
+    <SlaveID>1</SlaveID>
+    <Adress>4</Adress>
+    <Num>2</Num>
+    <Types>Float</Types>
+  </tag>
+</modbus>
